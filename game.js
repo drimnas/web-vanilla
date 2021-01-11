@@ -30,23 +30,9 @@ function gameLoop(){
    
 }
 
-function gameLoop2(){
 
-    ctx.fillStyle = 'green';
-    ctx.fillRect(x1,y1,100,100);
-
-    if(x1 + 100 + moveX >= canvas.width || x1 + moveX <= 0){
-        moveX *= -1
-    }
-
-    if(y1+ 100 + moveY >= canvas.height || y1 + moveY <= 0){
-        moveY *= -1;
-    }
-
-    x1 += moveX
-    y1 += moveY 
    
-}
+
 
 setInterval (gameLoop,1000/60)
 setInterval (gameLoop2,1000/60)
