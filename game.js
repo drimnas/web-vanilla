@@ -16,7 +16,12 @@ let accZ = 0
 function gameLoop(){
 
     let ac1 = new Accelerometer({frequency: 60});
-
+    ac1.addEventListener('reading', () => {
+        accX = ac1.x
+        accY = ac1.y
+        accZ = ac1.z
+    })
+    ac1.start();
 
 
     ctx.fillStyle = 'black';
