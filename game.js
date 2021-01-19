@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", startup);
 function gameLoop(){
 
     
-    debugText.textContent = "Debug console4 : ";
+    debugText.textContent = "Debug console5 : ";
     debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
 
     
@@ -47,7 +47,7 @@ function gameLoop(){
 
 
     ctx.fillStyle = 'red';
-    ctx.fillRect(accX,accZ ,100,100);
+    ctx.fillRect(xRec,yRec ,100,100);
 
     if(x + 100 + moveX >= canvas.width || x + moveX <= 0){
         moveX *= -1
@@ -57,8 +57,8 @@ function gameLoop(){
         moveY *= -1;
     }
 
-    xRec += moveX * accX
-    yRec += moveY * accY
+    xRec += accX
+    yRec += accY
    
 
     
