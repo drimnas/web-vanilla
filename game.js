@@ -2,10 +2,9 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 
-let x = 10
-let y = 10
-let x1 = 100
-let y1 = 100
+let xRec = 10
+let yRec= 10
+
 let moveX = 2
 let moveY = 2
 let accX = 0
@@ -48,7 +47,7 @@ function gameLoop(){
 
 
     ctx.fillStyle = 'red';
-    ctx.fillRect(x,y ,100,100);
+    ctx.fillRect(xRec,yRec ,100,100);
 
     if(x + 100 + moveX >= canvas.width || x + moveX <= 0){
         moveX *= -1
@@ -58,8 +57,8 @@ function gameLoop(){
         moveY *= -1;
     }
 
-    x += moveX
-    y += moveY 
+    xRec += moveX
+    yRec += moveY 
    
 
     
