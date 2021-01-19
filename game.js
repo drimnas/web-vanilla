@@ -8,14 +8,23 @@ let x1 = 100
 let y1 = 100
 let moveX = 2
 let moveY = 2
+let accX = 0
+let accY = 0
+let accZ = 0
+
 
 function gameLoop(){
+
+    let ac1 = new Accelerometer({frequency: 60});
+
+
+
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0, canvas.width,canvas.height);
 
 
     ctx.fillStyle = 'red';
-    ctx.fillRect(x,y,100,100);
+    ctx.fillRect(x * ac1.x,y * ac1.y,100,100);
 
     if(x + 100 + moveX >= canvas.width || x + moveX <= 0){
         moveX *= -1
@@ -35,4 +44,3 @@ function gameLoop(){
 
 
 setInterval (gameLoop,1000/60)
-setInterval (gameLoop2,1000/60)
