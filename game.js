@@ -15,18 +15,27 @@ let accZ = 0
 let debugText = new Text();
 debugText = document.getElementById('debug');
 
-
-function gameLoop(){
-
-    let ac1 = new Accelerometer({frequency: 60});
+function startup() {
+    
+    
     ac1.addEventListener('reading', () => {
-      
+        let ac1 = new Accelerometer({frequency: 60});
         accX = ac1.x
         accY = ac1.y
         accZ = ac1.z
-        document.getElementById("accele").innerHTML = Math.floor(accelerometer.x) + "<br>" + Math.floor(accelerometer.y) + "<br>" + Math.floor(accelerometer.z)
+
     })
     ac1.start();
+}
+
+document.addEventListener("DOMContentLoaded", startup);
+
+function gameLoop(){
+
+    
+    debugText.textContent = "Debug console1 : ";
+    debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
+
     
 
     ctx.fillStyle = 'black';
@@ -48,9 +57,7 @@ function gameLoop(){
     y += moveY 
    
 
-    debugText.textContent = "Debug console : ";
-    debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
-
+    
 
 
     }
