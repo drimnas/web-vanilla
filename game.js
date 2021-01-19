@@ -15,24 +15,21 @@ let accZ = 0
 
 function gameLoop(){
 
-    navigator.permissions.query({name:'accelerometer'}).then(function(result) {
-    if (result.state == 'granted') {
 
     let ac1 = new Accelerometer({frequency: 60});
     ac1.addEventListener('reading', () => {
-        accX = ac1.x
-        accY = ac1.y
-        accZ = ac1.z
+      
+        document.getElementById("accele").innerHTML = Math.floor(accelerometer.x) + "<br>" + Math.floor(accelerometer.y) + "<br>" + Math.floor(accelerometer.z)
     })
     ac1.start();
-}
+    
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0, canvas.width,canvas.height);
 
 
     ctx.fillStyle = 'red';
-    ctx.fillRect(x * ac1.x,y * ac1.y,100,100);
+    ctx.fillRect(x,y ,100,100);
 
     if(x + 100 + moveX >= canvas.width || x + moveX <= 0){
         moveX *= -1
@@ -45,7 +42,8 @@ function gameLoop(){
     x += moveX
     y += moveY 
    
-}
+
+    }
 
 
    
