@@ -18,16 +18,16 @@ debugText = document.getElementById('debug');
 function startup() {
     
     
-    ac1.addEventListener('reading', () => {
-        let ac1 = new Accelerometer({frequency: 60});
-        accX = ac1.x
-        accY = ac1.y
-        accZ = ac1.z
-
-    })
-    ac1.start();
+    let accelerometer = new Accelerometer({
+        frequency: 60
+    });
+     
+   accelerometer.addEventListener('reading', e => {
+        document.getElementById("accele").innerHTML = Math.floor(accelerometer.x) + "<br>" + Math.floor(accelerometer.y) + "<br>" + Math.floor(accelerometer.z)
+    });
+   
+   accelerometer.start();
 }
-
 document.addEventListener("DOMContentLoaded", startup);
 
 function gameLoop(){
