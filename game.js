@@ -15,6 +15,9 @@ let accZ = 0
 
 function gameLoop(){
 
+    navigator.permissions.query({name:'accelerometer'}).then(function(result) {
+    if (result.state == 'granted') {
+
     let ac1 = new Accelerometer({frequency: 60});
     ac1.addEventListener('reading', () => {
         accX = ac1.x
@@ -22,7 +25,7 @@ function gameLoop(){
         accZ = ac1.z
     })
     ac1.start();
-
+}
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0, canvas.width,canvas.height);
