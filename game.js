@@ -24,6 +24,11 @@ function startup() {
      
    accelerometer.addEventListener('reading', e => {
         document.getElementById("accele").innerHTML = Math.floor(accelerometer.x) + "<br>" + Math.floor(accelerometer.y) + "<br>" + Math.floor(accelerometer.z)
+        accX = accelerometer.x
+        accY = accelerometer.y
+        accZ = accelerometer.z
+   
+   
     });
    
    accelerometer.start();
