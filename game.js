@@ -2,15 +2,15 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 
-let xRec = 10
-let yRec= 10
+let xRec = 5
+let yRec= 5
 
 let moveX = 2
 let moveY = 2
 let accX = 0
 let accY = 0
 let accZ = 0
-
+let once = false
 let debugText = new Text();
 debugText = document.getElementById('debug');
 
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", startup);
 function gameLoop(){
 
     
-    debugText.textContent = "Debug console2 : ";
+    debugText.textContent = "Debug console3 : ";
     debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
 
     
@@ -47,7 +47,7 @@ function gameLoop(){
 
 
     ctx.fillStyle = 'red';
-    ctx.fillRect(xRec,yRec ,100,100);
+    ctx.fillRect(accX,accZ ,100,100);
 
     if(x + 100 + moveX >= canvas.width || x + moveX <= 0){
         moveX *= -1
