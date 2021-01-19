@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", startup);
 function gameLoop(){
 
     
-    debugText.textContent = "Debug console3 : ";
+    debugText.textContent = "Debug console4 : ";
     debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
 
     
