@@ -19,7 +19,7 @@ debugText = document.getElementById('debug');
 function gameLoop(){
 
   debugText.textContent = "Debug console : ";
-  debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ + "    V0.1";
+  debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
 
     let ac1 = new Accelerometer({frequency: 60});
     ac1.addEventListener('reading', () => {
