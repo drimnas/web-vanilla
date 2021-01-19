@@ -57,8 +57,8 @@ function gameLoop(){
         moveY *= -1;
     }
 
-    xRec += moveX
-    yRec += moveY 
+    xRec += moveX * accX
+    yRec += moveY * accY
    
 
     
