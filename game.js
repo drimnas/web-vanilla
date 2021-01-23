@@ -1,73 +1,63 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+let xRec = canvas.width/2 -50
+let yRec= canvas.height/2 -50
+let colorRed = 0
+let colorBlue = 0
+let colorGreen = 0
 
-let xRec = 5
-let yRec= 5
+var ongoingTouches = [];
 
-let moveX = 2
-let moveY = 2
-let accX = 0
-let accY = 0
-let accZ = 0
-let once = false
-let debugText = new Text();
 debugText = document.getElementById('debug');
 
-function startup() {
-    
-    
-    let accelerometer = new Accelerometer({
-        frequency: 60
-    });
+
      
-   accelerometer.addEventListener('reading', e => {
-        document.getElementById("accele").innerHTML = Math.floor(accelerometer.x) + "<br>" + Math.floor(accelerometer.y) + "<br>" + Math.floor(accelerometer.z)
-        accX = accelerometer.x
-        accY = accelerometer.y
-        accZ = accelerometer.z
-   
-   
-    });
-   
-   accelerometer.start();
-}
-document.addEventListener("DOMContentLoaded", startup);
+function startup() {
+    var el = document.getElementById("canvas");
+    el.addEventListener("touchstart", handleStart, false);
+  }
+  
+  document.addEventListener("DOMContentLoaded", startup);
+
+
+  function handleStart(evt) {
+    evt.preventDefault();
+    console.log("touchstart.");
+    var el = document.getElementById("canvas");
+    var ctx2 = el.getContext("2d");
+    var touches = evt.changedTouches;
+  
+    for (var i = 0; i < touches.length; i++) {
+      console.log("touchstart:" + i + "...");
+      ongoingTouches.push(copyTouch(touches[i]));
+      var color = colorForTouch(touches[i]);
+      ctx2.beginPath();
+      ctx2.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+      ctx2.fillStyle = color;
+      ctx2.fill();
+      console.log("touchstart:" + i + ".");
+    }
+  }
 
 function gameLoop(){
 
-    
-    debugText.textContent = "Debug console5 : ";
-    debugText.textContent += "xAcc : " + Math.round(accX) + "  yAcc : " + Math.round(accY) + "  zAcc : " + Math.round(accZ)
-
-    
-
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'green';
     ctx.fillRect(0,0, canvas.width,canvas.height);
 
-
-    ctx.fillStyle = 'red';
+    colorRed = xRec /canvas.width * 255
+    colorBlue = yRec/canvas.height * 255
+    
+    ctx.fillStyle = "rgb("+ colorRed +","+ 0 +","+ colorBlue +")";
     ctx.fillRect(xRec,yRec ,100,100);
-
-    if(x + 100 + moveX >= canvas.width || x + moveX <= 0){
-        moveX *= -1
-    }
-
-    if(y+ 100 + moveY >= canvas.height || y + moveY <= 0){
-        moveY *= -1;
-    }
-
-    xRec += accX
-    yRec += accY
-   
+    
+    colorRed = Math.floor(colorRed)
+    colorBlue = Math.floor(colorBlue)
 
     
-
-
-    }
-
-
+    debugText.textContent = "Debug console : " + colorRed + "mdr" + colorBlue;
    
 
-
+}
+   
 setInterval (gameLoop,1000/60)
