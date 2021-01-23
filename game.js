@@ -37,6 +37,7 @@ function startup() {
       ctx2.fillStyle = color;
       ctx2.fill();
       console.log("touchstart:" + i + ".");
+      colorBlue += 10;
     }
   }
 
