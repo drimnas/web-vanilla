@@ -13,33 +13,14 @@ debugText = document.getElementById('debug');
 
 
      
-function startup() {
-    var el = document.getElementById("canvas");
-    el.addEventListener("touchstart", handleStart, false);
-  }
-  
-  document.addEventListener("DOMContentLoaded", startup);
+canvas.addEventListener('touchmove', function(ev){
+    
+    var touchLocation = ev.targetTouches[0];
 
+    colorRed = touchLocation.pageX;
+    colorBlue = touchLocation.pageY;
 
-  function handleStart(evt) {
-    evt.preventDefault();
-    console.log("touchstart.");
-    var el = document.getElementById("canvas");
-    var ctx2 = el.getContext("2d");
-    var touches = evt.changedTouches;
-  
-    for (var i = 0; i < touches.length; i++) {
-      console.log("touchstart:" + i + "...");
-      ongoingTouches.push(copyTouch(touches[i]));
-      var color = colorForTouch(touches[i]);
-      ctx2.beginPath();
-      ctx2.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-      ctx2.fillStyle = color;
-      ctx2.fill();
-      console.log("touchstart:" + i + ".");
-      colorBlue += 10;
-    }
-  }
+})
 
 function gameLoop(){
 
@@ -56,7 +37,7 @@ function gameLoop(){
     colorBlue = Math.floor(colorBlue)
 
     
-    debugText.textContent = "Debug console : " + colorRed + "mdr" + colorBlue;
+    debugText.textContent = "Debug console1 : " + colorRed + "mdr" + colorBlue;
    
 
 }
