@@ -29,8 +29,8 @@ function startup() {
     console.log("touchstart.");
     var el = document.getElementById("canvas");
     var ctx = el.getContext("2d");
-    xRec = evt.x
-    yRec = evt.y
+    xRec = evt.x -70
+    yRec = evt.y -70
    
   }
 
@@ -52,7 +52,6 @@ function gameLoop(){
     
     debugText.textContent = "Debug console1 : " + colorRed + "mdr" + colorBlue;
    
-
 }
    
 setInterval (gameLoop,1000/60)
