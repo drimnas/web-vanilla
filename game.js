@@ -12,16 +12,29 @@ var ongoingTouches = [];
 debugText = document.getElementById('debug');
 
 
-     
-canvas.addEventListener('touchmove', function(ev){
-    
-    var touchLocation = ev.targetTouches[0];
+function startup() {
+    var el = document.getElementById("canvas");
+    el.addEventListener("mouseup", handleStart, false);
+  //  el.addEventListener("touchend", handleEnd, false);
+ //   el.addEventListener("touchcancel", handleCancel, false);
+ //   el.addEventListener("touchmove", handleMove, false);
+  }
+  
+  document.addEventListener("DOMContentLoaded", startup);
+  
+  var ongoingTouches = [];
 
-    colorRed = touchLocation.pageX;
-    colorBlue = touchLocation.pageY;
+  function handleStart(evt) {
+    evt.preventDefault();
+    console.log("touchstart.");
+    var el = document.getElementById("canvas");
+    var ctx = el.getContext("2d");
+    xRec = evt.x
+    yRec = evt.y
+   
+  }
 
-})
-
+ 
 function gameLoop(){
 
     ctx.fillStyle = 'green';
